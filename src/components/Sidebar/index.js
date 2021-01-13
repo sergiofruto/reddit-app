@@ -1,10 +1,11 @@
 import React from 'react';
+import { Aside } from './style';
 
 const Sidebar = () => {
   return (
-    <aside>
+    <Aside>
       <h2>Sidebar</h2>
-    </aside>
+    </Aside>
   );
 };
 
