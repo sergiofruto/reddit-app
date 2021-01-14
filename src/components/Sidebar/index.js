@@ -1,10 +1,16 @@
 import React from 'react';
-import { Aside } from './style';
+import PostCard from '../PostCard';
+import { Aside, Title } from './style';
 
 const Sidebar = () => {
   return (
     <Aside>
-      <h2>Sidebar</h2>
+      <Title>Reddit Posts</Title>
+      <div className="post-list">
+        <PostCard></PostCard>
+        <PostCard></PostCard>
+        <PostCard></PostCard>
+      </div>
     </Aside>
   );
 };
