@@ -8,8 +8,12 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import { fetchTopPosts } from './actions'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, composeWithDevTools(
+  applyMiddleware(thunk),
+));
+
 store.dispatch(fetchTopPosts());
 
 ReactDOM.render(

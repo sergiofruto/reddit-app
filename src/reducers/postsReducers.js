@@ -9,7 +9,7 @@ export default function postsReducers(state = initialState, action) {
     case FETCH_TOP_POSTS:
       return {
         ...state,
-        posts: action.posts,
+        posts: action.payload.data.children,
       }
     default:
       return state;
