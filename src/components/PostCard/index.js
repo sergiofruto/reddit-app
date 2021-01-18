@@ -36,7 +36,6 @@ const PostCard = ({ post }) => {
       <CardBottom className="card-bottom">
         <button>Dismiss post</button>
         <span>{post.num_comments} comments</span>
-        {console.log(post)}
       </CardBottom>
     </Card>
   );

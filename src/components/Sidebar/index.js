@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
 import PostCard from '../PostCard';
 import { Aside, Title } from './style';
+import { fetchTopPosts } from '../../actions'
 
-const Sidebar = ({ posts }) => {
+const Sidebar = () => {
+  const dispatch = useDispatch();
+  const posts = useSelector(state => state.reddit.posts);
+
+  useEffect(() => dispatch(fetchTopPosts()), [dispatch]);
+
   return (
     <Aside>
       <Title>Reddit Posts</Title>
