@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_TOP_POSTS, SELECT_POST } from './types.js';
+import { FETCH_TOP_POSTS, SELECT_POST, READ_POST } from './types.js';
 
 const apiUrl = 'https://www.reddit.com/r/all/top.json?limit=50';
 
@@ -8,6 +8,15 @@ export const selectPost = post => {
     type: SELECT_POST,
     payload: {
       post
+    }
+  }
+};
+
+export const readPost = postId => {
+  return {
+    type: READ_POST,
+    payload: {
+      postId
     }
   }
 };
