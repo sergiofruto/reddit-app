@@ -21,7 +21,7 @@ export const fetchTopPosts = () => {
       .then(posts => {
         dispatch({
           type: FETCH_TOP_POSTS,
-          payload: posts
+          payload: posts.data.children
         })
       })
       .catch(error => {

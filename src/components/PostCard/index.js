@@ -1,20 +1,20 @@
 import React from 'react';
 import { Card, CardTop, CardBody, CardBottom, Author} from './style';
 
-const PostCard = () => {
+const PostCard = ({ post }) => {
   return (
     <Card>
       <CardTop className="card-top">
-        <Author>Author</Author>
+        <Author>{post.author}</Author>
         <time>18 hours ago</time>
       </CardTop>
       <CardBody className="card-body">
-        <img src="https://b.thumbs.redditmedia.com/J59ajm_dSTZDuTLow4sKmfbXLpYGLOt5ycTc0EI2TdI.jpg" alt=""/>
-        <h1>Post title</h1>
+        <img src={post.thumbnail} alt={post.title} />
+        <h1>{post.title}</h1>
       </CardBody>
       <CardBottom className="card-bottom">
         <button>Dismiss post</button>
-        <span>12983 comments</span>
+        <span>{post.num_comments} comments</span>
       </CardBottom>
     </Card>
   );

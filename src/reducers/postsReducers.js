@@ -1,17 +1,22 @@
 import { FETCH_TOP_POSTS, SELECT_POST } from '../actions/types';
 
 const initialState = {
-  posts: []
+  posts: [],
+  selectedPost: [],
 };
 
-export default function postsReducers(state = initialState, action) {
+const postsReducers = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_TOP_POSTS:
       return {
         ...state,
-        posts: action.payload.data.children,
+        posts: action.payload,
       }
     default:
-      return state;
+      return {
+        ...state
+      }
   }
 }
+
+export default postsReducers;
