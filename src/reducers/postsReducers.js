@@ -3,6 +3,7 @@ import { FETCH_TOP_POSTS, SELECT_POST, READ_POST } from '../actions/types';
 const initialState = {
   posts: [],
   selectedPost: [],
+  readPosts: [],
 };
 
 const postsReducers = (state = initialState, action) => {
@@ -20,7 +21,7 @@ const postsReducers = (state = initialState, action) => {
     case READ_POST:
       return {
         ...state,
-        readPosts: [...state.readPosts, action.postId]
+        readPosts: [...state.readPosts, action.payload.postId]
       }
     default:
       return {

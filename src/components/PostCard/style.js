@@ -27,3 +27,10 @@ export const CardBottom = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const UnreadMarker = styled.span`
+  width: 16px;
+  height: 16px;
+  background-color: blue;
+  border-radius: 50%;
+`;
