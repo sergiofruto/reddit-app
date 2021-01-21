@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
+import Moment from 'react-moment';
 import * as actions from '../../actions';
 import CloseIcon from './closeIcon';
 import ChevronRightIcon from './chevronRightIcon';
@@ -30,7 +31,9 @@ const PostCard = ({ post }) => {
         <Author>
           {post.author}
         </Author>
-        <Time>18 hours ago</Time>
+        <Time>
+          <Moment fromNow>{post.created * 1000}</Moment>
+        </Time>
       </CardTop>
       <CardBody className="card-body">
         <Image src={post.thumbnail} alt={post.title} />
