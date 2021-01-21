@@ -21,11 +21,11 @@ export const readPost = postId => {
   }
 };
 
-export const dismissPost = index => {
+export const dismissPost = postId => {
   return {
     type: DISMISS_POST,
     payload: {
-      index
+      postId
     }
   }
 };

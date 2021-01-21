@@ -32,14 +32,14 @@ const PostCard = ({ post, postIndex }) => {
     dispatch(actions.readPost(post.id));
   };
 
-  const handleDismissPost = (e, postIndex) => {
+  const handleDismissPost = (e, postId) => {
     //prevents triggering parent's handleSelectPost
     e.stopPropagation();
     //triggers dissmissAnimation for the card
     setAnimate(true);
-    //after animation duration, triggers dismissPost and removes card from state
+    //after animation duration, triggers dismissPost
     setTimeout(() => {
-      dispatch(actions.dismissPost(postIndex))
+      dispatch(actions.dismissPost(postId))
     }, 400);
   };
 
@@ -70,7 +70,7 @@ const PostCard = ({ post, postIndex }) => {
           <ChevronRightIcon />
         </CardBody>
         <CardBottom>
-          <DismissButton onClick={(e) => handleDismissPost(e, postIndex)}>
+          <DismissButton onClick={(e) => handleDismissPost(e, post.id)}>
             <CloseIcon />
             Dismiss post
           </DismissButton>

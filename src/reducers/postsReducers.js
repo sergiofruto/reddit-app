@@ -4,6 +4,7 @@ const initialState = {
   posts: [],
   selectedPost: [],
   readPosts: [],
+  dismissedPosts: [],
 };
 
 const postsReducers = (state = initialState, action) => {
@@ -26,7 +27,7 @@ const postsReducers = (state = initialState, action) => {
     case DISMISS_POST:
       return {
         ...state,
-        posts: state.posts.filter((post, index) => index !== action.payload.index),
+        dismissedPosts: [...state.dismissedPosts, action.payload.postId],
       }
     case DISMISS_ALL_POSTS:
       return []

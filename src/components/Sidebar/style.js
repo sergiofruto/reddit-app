@@ -10,7 +10,7 @@ export const Aside = styled.aside`
   max-height: 100vh;
   background-color: black;
   color: white;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 export const Title = styled.h1`

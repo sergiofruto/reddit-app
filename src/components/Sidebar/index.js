@@ -6,7 +6,7 @@ import * as actions from '../../actions';
 
 const Sidebar = () => {
   const [animate, setAnimate] = useState(false);
-  const posts = useSelector(state => state.reddit.posts);
+  const posts = useSelector(state => state.reddit.posts.filter(post => !state.reddit.dismissedPosts.includes(post.data.id)));
   const dispatch = useDispatch();
 
   const handleDismissAllPost = () => {
