@@ -34,7 +34,7 @@ export const Author = styled.h2`
   color: white;
 `;
 
-export const Time = styled.time`
+export const Time = styled.span`
   font-size: .8rem;
   color: #dedede;
 `;
