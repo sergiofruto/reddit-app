@@ -4,7 +4,21 @@ import Moment from 'react-moment';
 import * as actions from '../../actions';
 import CloseIcon from './closeIcon';
 import ChevronRightIcon from './chevronRightIcon';
-import { Card, CardInner, CardTop, CardBody, CardBottom, Comments, Image, Author, UnreadMarker, Time, Title, DismissButton } from './style';
+import {
+  Card,
+  CardInner,
+  CardTop,
+  CardBody,
+  CardBottom,
+  Comments,
+  Image,
+  Author,
+  UnreadMarker,
+  Time,
+  Title,
+  DismissButton,
+  DismissAllButton,
+} from './style';
 
 const PostCard = ({ post, postIndex }) => {
   const [unread, setUnread] = useState(true);
@@ -13,7 +27,9 @@ const PostCard = ({ post, postIndex }) => {
   const dispatch = useDispatch();
 
   const handleSelectPost = (post) => {
+    //opens the post in the main content
     dispatch(actions.selectPost(post));
+    //adds the post to the read list
     dispatch(actions.readPost(post.id));
   };
 
@@ -34,6 +50,7 @@ const PostCard = ({ post, postIndex }) => {
     }
   };
 
+  //when PostCards renders, checks if it was already read
   useEffect(() => checkReadStatus(readPost, post.id), [readPost, post.id]);
 
   return (
