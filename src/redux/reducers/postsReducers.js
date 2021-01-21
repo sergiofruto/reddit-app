@@ -22,7 +22,7 @@ const postsReducers = (state = initialState, action) => {
     case READ_POST:
       return {
         ...state,
-        readPosts: [...state.readPosts, action.payload.postId]
+        readPosts: [...state.readPosts, action.payload.postId],
       }
     case DISMISS_POST:
       return {
@@ -30,7 +30,10 @@ const postsReducers = (state = initialState, action) => {
         dismissedPosts: [...state.dismissedPosts, action.payload.postId],
       }
     case DISMISS_ALL_POSTS:
-      return []
+      return {
+        ...state,
+        dismissedPosts: state.posts.map(post => post.data.id),
+      }
     default:
       return {
         ...state

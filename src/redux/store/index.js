@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { loadState, saveState } from '../localStorage';
 import rootReducer from '../reducers'
+import { loadState, saveState } from './../localStorage';
 
 //checks if there is a previous state in localstorage
 const persistedState = loadState();
