@@ -6,14 +6,19 @@ import CloseIcon from './closeIcon';
 import ChevronRightIcon from './chevronRightIcon';
 import { Card, CardTop, CardBody, CardBottom, Comments, Image, Author, UnreadMarker, Time, Title, DismissButton } from './style';
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, postIndex }) => {
   const [unread, setUnread] = useState(true);
   const readPost = useSelector(state => state.reddit.readPosts);
   const dispatch = useDispatch();
 
-  const handleSelectPost = (e, post) => {
+  const handleSelectPost = (post) => {
     dispatch(actions.selectPost(post));
     dispatch(actions.readPost(post.id));
+  };
+
+  const handleDismissPost = (e, postIndex) => {
+    e.stopPropagation();
+    dispatch(actions.dismissPost(postIndex));
   };
 
   const checkReadStatus = (readPost, postId) => {
@@ -25,7 +30,7 @@ const PostCard = ({ post }) => {
   useEffect(() => checkReadStatus(readPost, post.id), [readPost, post.id]);
 
   return (
-    <Card onClick={(e) => handleSelectPost(e, post)}>
+    <Card onClick={(e) => handleSelectPost(post)}>
       <CardTop className="card-top">
         {unread && <UnreadMarker />}
         <Author>
@@ -41,7 +46,10 @@ const PostCard = ({ post }) => {
         <ChevronRightIcon />
       </CardBody>
       <CardBottom className="card-bottom">
-        <DismissButton><CloseIcon />Dismiss</DismissButton>
+        <DismissButton onClick={(e) => handleDismissPost(e, postIndex)}>
+          <CloseIcon />
+          Dismiss post
+        </DismissButton>
         <Comments>{post.num_comments} comments</Comments>
       </CardBottom>
     </Card>

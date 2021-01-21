@@ -14,8 +14,8 @@ const Sidebar = () => {
     <Aside>
       <Title>Reddit Posts</Title>
       <div className="post-list">
-        {posts.map((post) => (
-          <PostCard key={post.data.id} post={post.data} />
+        {posts.map((post, i) => (
+          <PostCard key={post.data.id} post={post.data} postIndex={i} />
         ))}
       </div>
     </Aside>
