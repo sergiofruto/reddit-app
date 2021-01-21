@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from '../../actions';
-
-import { Card, CardTop, CardBody, CardBottom, Author, UnreadMarker } from './style';
+import CloseIcon from './closeIcon';
+import ChevronRightIcon from './chevronRightIcon';
+import { Card, CardTop, CardBody, CardBottom, Comments, Image, Author, UnreadMarker, Time, Title, DismissButton } from './style';
 
 const PostCard = ({ post }) => {
+  const [unread, setUnread] = useState(true);
   const readPost = useSelector(state => state.reddit.readPosts);
   const dispatch = useDispatch();
-  const [unread, setUnread] = useState(true);
 
   const handleSelectPost = (e, post) => {
     dispatch(actions.selectPost(post));
@@ -15,7 +16,7 @@ const PostCard = ({ post }) => {
   };
 
   const checkReadStatus = (readPost, postId) => {
-    if (readPost.indexOf(postId) > -1) {
+    if (readPost.includes(postId)) {
       setUnread(false);
     }
   };
@@ -25,17 +26,20 @@ const PostCard = ({ post }) => {
   return (
     <Card onClick={(e) => handleSelectPost(e, post)}>
       <CardTop className="card-top">
-        {unread && <UnreadMarker /> }
-        <Author>{post.author}</Author>
-        <time>18 hours ago</time>
+        {unread && <UnreadMarker />}
+        <Author>
+          {post.author}
+        </Author>
+        <Time>18 hours ago</Time>
       </CardTop>
       <CardBody className="card-body">
-        <img src={post.thumbnail} alt={post.title} />
-        <h1>{post.title}</h1>
+        <Image src={post.thumbnail} alt={post.title} />
+        <Title>{post.title}</Title>
+        <ChevronRightIcon />
       </CardBody>
       <CardBottom className="card-bottom">
-        <button>Dismiss post</button>
-        <span>{post.num_comments} comments</span>
+        <DismissButton><CloseIcon />Dismiss</DismissButton>
+        <Comments>{post.num_comments} comments</Comments>
       </CardBottom>
     </Card>
   );

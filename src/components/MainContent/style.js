@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-export const Post = styled.article``;
+export const Post = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+`;
 
 export const PostAuthor = styled.h1`
   margin: 0 0 32px;

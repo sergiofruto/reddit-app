@@ -7,7 +7,6 @@ const MainContent = () => {
 
   return (
     <div>
-      <h1>Post Content</h1>
         {(selectedPost === undefined || selectedPost.length === 0) ? 'Select a post to read' : (
           <Post>
             <PostAuthor>{selectedPost.author}</PostAuthor>
