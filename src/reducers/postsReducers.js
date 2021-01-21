@@ -1,4 +1,4 @@
-import { FETCH_TOP_POSTS, SELECT_POST, READ_POST, DISMISS_POST } from '../actions/types';
+import { FETCH_TOP_POSTS, SELECT_POST, READ_POST, DISMISS_POST, DISMISS_ALL_POSTS } from '../actions/types';
 
 const initialState = {
   posts: [],
@@ -28,6 +28,8 @@ const postsReducers = (state = initialState, action) => {
         ...state,
         posts: state.posts.filter((post, index) => index !== action.payload.index),
       }
+    case DISMISS_ALL_POSTS:
+      return []
     default:
       return {
         ...state

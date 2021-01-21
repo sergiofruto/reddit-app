@@ -17,7 +17,6 @@ import {
   Time,
   Title,
   DismissButton,
-  DismissAllButton,
 } from './style';
 
 const PostCard = ({ post, postIndex }) => {

@@ -28,4 +28,5 @@ export const DismissAllButton = styled.button`
   font-size: 0.9rem;
   color: orange;
   cursor: pointer;
+  outline: none;
 `;
