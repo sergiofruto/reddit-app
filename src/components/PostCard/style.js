@@ -1,10 +1,25 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const dismissAnimation = keyframes`
+ 0% { transform: translateX(0); opacity: 1; }
+ 100% { transform: translateX(-100%); opacity: 0;}
+`
 
 export const Card = styled.div`
+  position: relative;
   padding: 10px 0;
   margin: 0 10px;
   &:not(:last-child) {
     border-bottom: 1px solid #eee;
+  }
+`;
+
+export const CardInner = styled.div`
+  opacity: 1;
+  ${props => props.animate && css`
+    animation: ${dismissAnimation};
+    animation-duration: .5s;
+    animation-fill-mode: forwards;`
   }
 `;
 
@@ -27,9 +42,9 @@ export const UnreadMarker = styled.span`
 `;
 
 export const Author = styled.h2`
-  padding-left: 20px;
+  padding-left: 1.25rem;
   margin: 0;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   color: white;
 `;
@@ -71,6 +86,7 @@ export const DismissButton = styled.button`
   font-size: 0.9rem;
   color: white;
   outline: none;
+  cursor: pointer;
   > svg {
     margin-right: .5rem;
   }
