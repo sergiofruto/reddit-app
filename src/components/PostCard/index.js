@@ -37,11 +37,11 @@ const PostCard = ({ post, postIndex }) => {
   useEffect(() => checkReadStatus(readPost, post.id), [readPost, post.id]);
 
   return (
-    <Card onClick={(e) => handleSelectPost(post)} animate={animate}>
+    <Card onClick={(e) => handleSelectPost(post)} unread={unread}>
       <CardInner animate={animate}>
         <CardTop>
           {unread && <UnreadMarker />}
-          <Author>
+          <Author unread={unread}>
             {post.author}
           </Author>
           <Time>
@@ -49,8 +49,8 @@ const PostCard = ({ post, postIndex }) => {
           </Time>
         </CardTop>
         <CardBody>
-          <Image src={post.thumbnail} alt={post.title} />
-          <Title>{post.title}</Title>
+          {post.thumbnail && <Image src={post.thumbnail} alt={post.title} />}
+          <Title unread={unread}>{post.title}</Title>
           <ChevronRightIcon />
         </CardBody>
         <CardBottom>

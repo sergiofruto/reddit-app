@@ -5,12 +5,24 @@ const dismissAnimation = keyframes`
  100% { transform: translateX(-100%); opacity: 0;}
 `
 
+const blinkCard = keyframes`
+ 0% { background-color: #000000; }
+ 50% { background-color: #1d1d1d; }
+ 100% { background-color: #000000; }
+`
+
 export const Card = styled.div`
   position: relative;
   padding: 10px 0;
   margin: 0 10px;
+  background-color: #000000;
   &:not(:last-child) {
     border-bottom: 1px solid #eee;
+  }
+  ${props => !props.unread && css`
+    animation: ${blinkCard};
+    animation-duration: .25s;
+    animation-fill-mode: forwards;`
   }
 `;
 
@@ -47,6 +59,10 @@ export const Author = styled.h2`
   font-size: 1rem;
   font-weight: 400;
   color: white;
+  transition: color .1s ease-out;
+  ${props => !props.unread && css`
+    color: #a0a0a0;
+  `}
 `;
 
 export const Time = styled.span`
@@ -58,16 +74,27 @@ export const CardBody = styled.div`
   display: flex;
   align-items: center;
   padding: .8rem 0 1rem;
+  > svg {
+    flex: 0 0 16px;
+    margin-left: auto;
+  }
 `;
 
 export const Image = styled.img`
+  max-width: 120px;
   margin-right: .8rem;
+  font-size: .4rem;
 `;
 
 export const Title = styled.h1`
-  font-size: 1rem;
+  margin: 0 .5rem 0 0;
+  font-size: .9rem;
   font-weight: 400;
-  margin: 0;
+  color: white;
+  transition: color .1s ease-out;
+  ${props => !props.unread && css`
+    color: #a0a0a0;
+  `}
 `;
 
 export const CardBottom = styled.div`
