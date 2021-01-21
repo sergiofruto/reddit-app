@@ -21,3 +21,10 @@ export const PostTitle = styled.h2`
   margin: 0 0 8px;
   text-align: center;
 `;
+
+export const Placeholder = styled.span`
+  display: block;
+  padding-top: 2rem;
+  text-align: center;
+`;
+

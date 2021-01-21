@@ -1,15 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import PostCard from '../PostCard';
-import { Aside, Title, DismissAllButton } from './style';
+import { Aside, Title, PostsList, DismissAllButton } from './style';
 import * as actions from '../../actions';
 
 const Sidebar = () => {
+  const [animate, setAnimate] = useState(false);
   const posts = useSelector(state => state.reddit.posts);
   const dispatch = useDispatch();
 
   const handleDismissAllPost = () => {
-    dispatch(actions.dismissAllPosts());
+    //triggers dissmissAnimation for the posts list dissapearing
+    setAnimate(true);
+    //after animation duration, triggers dismissPost and removes card from state
+    setTimeout(() => {
+      dispatch(actions.dismissAllPosts());
+    }, 450);
   }
 
   useEffect(() => dispatch(actions.fetchTopPosts()), [dispatch]);
@@ -17,16 +23,14 @@ const Sidebar = () => {
   return (
     <Aside>
       <Title>Reddit Posts</Title>
-      <div className="post-list">
+      <PostsList animate={animate}>
         {posts && posts.map((post, i) => (
           <PostCard key={post.data.id} post={post.data} postIndex={i} />
         ))}
-      </div>
-      {posts && 
+      </PostsList>
         <DismissAllButton onClick={() => handleDismissAllPost()}>
           Dismiss All
         </DismissAllButton>
-      }
     </Aside>
   );
 };

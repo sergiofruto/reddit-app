@@ -1,4 +1,9 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const dismissAllAnimation = keyframes`
+ 0% { transform: scale(1); opacity: 1; }
+ 100% { transform: scale(0); opacity: 0;}
+`
 
 export const Aside = styled.aside`
   position: relative;
@@ -6,7 +11,7 @@ export const Aside = styled.aside`
   background-color: black;
   color: white;
   overflow: scroll;
-  `;
+`;
 
 export const Title = styled.h1`
   margin: 0;
@@ -15,6 +20,17 @@ export const Title = styled.h1`
   font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
+`;
+
+export const PostsList = styled.div`
+  min-height: calc(100vh - 36px - 48px);
+  transform-origin: top left;
+  opacity: 1;
+  ${props => props.animate && css`
+    animation: ${dismissAllAnimation};
+    animation-duration: .45s;
+    animation-fill-mode: forwards;`
+  }
 `;
 
 export const DismissAllButton = styled.button`
