@@ -32,6 +32,7 @@ const postsReducers = (state = initialState, action) => {
     case DISMISS_ALL_POSTS:
       return {
         ...state,
+        selectedPost: '',
         dismissedPosts: state.posts.map(post => post.data.id),
       }
     default:
