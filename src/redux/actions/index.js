@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_TOP_POSTS, SELECT_POST, READ_POST, DISMISS_POST, DISMISS_ALL_POSTS } from './types.js';
+import { FETCH_TOP_POSTS, SELECT_POST, READ_POST, DISMISS_POST, DISMISS_ALL_POSTS, TOGGLE_SIDEBAR } from './types.js';
 
 const apiUrl = 'https://www.reddit.com/r/all/top.json?limit=50';
 
@@ -34,6 +34,15 @@ export const dismissAllPosts = () => {
   return {
     type: DISMISS_ALL_POSTS,
     payload: {
+    }
+  }
+};
+
+export const toggleSideBar = sidebar => {
+  return {
+    type: TOGGLE_SIDEBAR,
+    payload: {
+      sidebar
     }
   }
 };

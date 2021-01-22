@@ -4,9 +4,10 @@ import PostCard from '../PostCard';
 import { Aside, AsideContainer, Title, PostsList, DismissAllButton } from './style';
 import * as actions from '../../redux/actions';
 
-const Sidebar = ({ slideIn }) => {
+const Sidebar = () => {
   const [animate, setAnimate] = useState(false);
   const posts = useSelector(state => state.reddit.posts.filter(post => !state.reddit.dismissedPosts.includes(post.data.id)));
+  const sidebar = useSelector(state => state.reddit.sidebar);
   const dispatch = useDispatch();
 
   const handleDismissAllPost = () => {
@@ -21,7 +22,7 @@ const Sidebar = ({ slideIn }) => {
   useEffect(() => dispatch(actions.fetchTopPosts()), [dispatch]);
 
   return (
-    <Aside slideIn={slideIn}>
+    <Aside slideIn={sidebar}>
       <AsideContainer>
         <Title>Reddit Posts</Title>
         <PostsList animate={animate}>

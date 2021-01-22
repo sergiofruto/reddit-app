@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch } from "react-redux";
 import { useSwipeable } from "react-swipeable";
 import MainContent from '../MainContent';
 import Sidebar from '../Sidebar';
 import { MainGrid } from './style';
+import * as actions from '../../redux/actions';
 
 const App = () => {
-  const [slideIn, setSlideIn] = useState(false);
+  const dispatch = useDispatch();
+
   const handlers = useSwipeable({
-    onSwipedLeft: () => setSlideIn(false),
-    onSwipedRight: () => setSlideIn(true),
+    onSwipedLeft: () => dispatch(actions.toggleSideBar(false)),
+    onSwipedRight: () => dispatch(actions.toggleSideBar(true)),
   });
 
   return (
     <MainGrid {...handlers}>
-      <Sidebar slideIn={slideIn} />
+      <Sidebar />
       <MainContent />
-      {console.log(slideIn)}
     </MainGrid>
   );
 };

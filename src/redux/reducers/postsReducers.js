@@ -1,10 +1,11 @@
-import { FETCH_TOP_POSTS, SELECT_POST, READ_POST, DISMISS_POST, DISMISS_ALL_POSTS } from '../actions/types';
+import { FETCH_TOP_POSTS, SELECT_POST, READ_POST, DISMISS_POST, DISMISS_ALL_POSTS, TOGGLE_SIDEBAR } from '../actions/types';
 
 const initialState = {
   posts: [],
   selectedPost: [],
   readPosts: [],
   dismissedPosts: [],
+  sidebar: false,
 };
 
 const postsReducers = (state = initialState, action) => {
@@ -28,6 +29,11 @@ const postsReducers = (state = initialState, action) => {
       return {
         ...state,
         dismissedPosts: [...state.dismissedPosts, action.payload.postId],
+      }
+    case TOGGLE_SIDEBAR:
+      return {
+        ...state,
+        sidebar: action.payload.sidebar,
       }
     case DISMISS_ALL_POSTS:
       return {
