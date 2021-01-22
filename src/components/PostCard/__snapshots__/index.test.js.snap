@@ -25,7 +25,7 @@ exports[`PostCard React-Redux Component should render with given state from Redu
         <time
           dateTime={"2021-01-21T20:26:24.000Z"}
         >
-          10 hours ago
+          20 hours ago
         </time>
       </span>
     </div>

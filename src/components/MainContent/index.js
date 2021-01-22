@@ -8,12 +8,13 @@ const MainContent = () => {
   return (
     <section>
       {(selectedPost === undefined || selectedPost.length === 0) ? <Placeholder>Select a post to read</Placeholder> : (
-          <Post>
-            <PostAuthor>{selectedPost.author}</PostAuthor>
-            <PostImage src={selectedPost.thumbnail} alt={selectedPost.title}/>
-            <PostTitle>{selectedPost.title}</PostTitle>
-          </Post>
-        )}
+        <Post>
+          <PostAuthor>{selectedPost.author}</PostAuthor>
+          {selectedPost.thumbnail && <PostImage src={selectedPost.thumbnail} alt={selectedPost.title}/>}
+          {/* {selectedPost.preview.images && <PostImage src={selectedPost.preview.images[0].source.url} alt={selectedPost.title} />} */}
+          <PostTitle>{selectedPost.title}</PostTitle>
+        </Post>
+      )}
     </section>
   );
 };

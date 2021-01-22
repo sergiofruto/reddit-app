@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainContent React-Redux Component should render with given state from Redux store 1`] = `
+<section>
+  <span
+    className="sc-eCssSg jxVGDZ"
+  >
+    Select a post to read
+  </span>
+</section>
+`;
