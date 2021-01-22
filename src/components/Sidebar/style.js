@@ -6,11 +6,20 @@ const dismissAllAnimation = keyframes`
 `
 
 export const Aside = styled.aside`
-  position: relative;
+  position: absolute;
   max-height: 100vh;
   background-color: black;
   color: white;
   overflow-y: scroll;
+  max-width: 360px;
+  transform: translateX(-100%);
+  transition: transform .35s ease-out;
+  ${props => props.slideIn && css`
+    transform: translateX(0);`
+  }
+  @media (min-width: 1024px){
+    position: relative;
+  }
 `;
 
 export const Title = styled.h1`

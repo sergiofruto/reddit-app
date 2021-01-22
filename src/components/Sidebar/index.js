@@ -4,7 +4,7 @@ import PostCard from '../PostCard';
 import { Aside, Title, PostsList, DismissAllButton } from './style';
 import * as actions from '../../actions';
 
-const Sidebar = () => {
+const Sidebar = ({ slideIn }) => {
   const [animate, setAnimate] = useState(false);
   const posts = useSelector(state => state.reddit.posts.filter(post => !state.reddit.dismissedPosts.includes(post.data.id)));
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Sidebar = () => {
   useEffect(() => dispatch(actions.fetchTopPosts()), [dispatch]);
 
   return (
-    <Aside>
+    <Aside slideIn={slideIn}>
       <Title>Reddit Posts</Title>
       <PostsList animate={animate}>
         {posts && posts.map((post, i) => (

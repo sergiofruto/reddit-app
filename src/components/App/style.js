@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const MainGrid = styled.main`
+  position: relative;
   min-height: 100vh;
 
   @media (min-width: 1024px){
