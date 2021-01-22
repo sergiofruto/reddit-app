@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import Moment from 'react-moment';
-import * as actions from '../../actions';
+import * as actions from '../../redux/actions';
 import CloseIcon from './closeIcon';
 import ChevronRightIcon from './chevronRightIcon';
 import {

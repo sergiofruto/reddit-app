@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import PostCard from '../PostCard';
-import { Aside, Title, PostsList, DismissAllButton } from './style';
-import * as actions from '../../actions';
+import { Aside, AsideContainer, Title, PostsList, DismissAllButton } from './style';
+import * as actions from '../../redux/actions';
 
 const Sidebar = ({ slideIn }) => {
   const [animate, setAnimate] = useState(false);
@@ -22,15 +22,17 @@ const Sidebar = ({ slideIn }) => {
 
   return (
     <Aside slideIn={slideIn}>
-      <Title>Reddit Posts</Title>
-      <PostsList animate={animate}>
-        {posts && posts.map((post, i) => (
-          <PostCard key={post.data.id} post={post.data} postIndex={i} />
-        ))}
-      </PostsList>
+      <AsideContainer>
+        <Title>Reddit Posts</Title>
+        <PostsList animate={animate}>
+          {posts && posts.map((post, i) => (
+            <PostCard key={post.data.id} post={post.data} postIndex={i} />
+          ))}
+        </PostsList>
         <DismissAllButton onClick={() => handleDismissAllPost()}>
           Dismiss All
         </DismissAllButton>
+      </AsideContainer>
     </Aside>
   );
 };

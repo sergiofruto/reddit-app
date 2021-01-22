@@ -7,11 +7,11 @@ const dismissAllAnimation = keyframes`
 
 export const Aside = styled.aside`
   position: absolute;
-  max-height: 100vh;
+  width: 80%;
+  max-width: 360px;
+  height: 100vh;
   background-color: black;
   color: white;
-  overflow-y: scroll;
-  max-width: 360px;
   transform: translateX(-100%);
   transition: transform .35s ease-out;
   ${props => props.slideIn && css`
@@ -19,20 +19,36 @@ export const Aside = styled.aside`
   }
   @media (min-width: 1024px){
     position: relative;
+    width: initial;
+    transform: initial;
   }
 `;
 
+export const AsideContainer = styled.div`
+  position: relative;
+  height: 100%;
+  overflow-y: scroll;
+`;
+
 export const Title = styled.h1`
-  margin: 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: .8rem 0;
+  margin: 0;
   background-color: #1b1b1b;
   font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
+  z-index: 10;
 `;
 
 export const PostsList = styled.div`
-  min-height: calc(100vh - 36px - 48px);
+  min-height: calc(100vh - 49px - 37px);
   transform-origin: top left;
   opacity: 1;
   ${props => props.animate && css`
