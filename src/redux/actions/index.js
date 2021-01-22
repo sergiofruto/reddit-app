@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FETCH_TOP_POSTS, SELECT_POST, READ_POST, DISMISS_POST, DISMISS_ALL_POSTS, TOGGLE_SIDEBAR } from './types.js';
 
-const apiUrl = 'https://www.reddit.com/r/all/top.json?limit=50';
+const apiUrl = 'https://www.reddit.com/r/all/top.json?limit=1';
 
 export const selectPost = post => {
   return {

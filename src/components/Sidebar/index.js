@@ -9,7 +9,7 @@ const Sidebar = () => {
   const posts = useSelector(state => state.reddit.posts.filter(post => !state.reddit.dismissedPosts.includes(post.data.id)));
   const sidebar = useSelector(state => state.reddit.sidebar);
   const dispatch = useDispatch();
-
+  console.log(posts[0]);
   const handleDismissAllPost = () => {
     //triggers dissmissAnimation for the posts list dissapearing
     setAnimate(true);

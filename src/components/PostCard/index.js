@@ -19,7 +19,7 @@ import {
   DismissButton,
 } from './style';
 
-const PostCard = ({ post, postIndex }) => {
+const PostCard = ({ post }) => {
   const [unread, setUnread] = useState(true);
   const [animate, setAnimate] = useState(false);
   const readPost = useSelector(state => state.reddit.readPosts);
