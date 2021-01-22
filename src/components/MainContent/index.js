@@ -6,7 +6,7 @@ const MainContent = () => {
   const selectedPost = useSelector(state => state.reddit.selectedPost);
 
   return (
-    <div>
+    <>
       {(selectedPost === undefined || selectedPost.length === 0) ? <Placeholder>Select a post to read</Placeholder> : (
           <Post>
             <PostAuthor>{selectedPost.author}</PostAuthor>
@@ -14,7 +14,7 @@ const MainContent = () => {
             <PostTitle>{selectedPost.title}</PostTitle>
           </Post>
         )}
-    </div>
+    </>
   );
 };
 
